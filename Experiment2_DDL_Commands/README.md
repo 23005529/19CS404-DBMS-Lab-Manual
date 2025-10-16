@@ -105,123 +105,189 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Write a SQL Query to change the name of attribute "name" to "first_name" and add mobilenumber as number ,DOB as Date in the table Companies.
 
 ```sql
--- Paste your SQL code below for Question 1
+ ALTER TABLE Companies
+rename name to first_name;
+ALTER TABLE Companies
+ADD COLUMN mobilenumber number;
+ALTER TABLE Companies
+ADD COLUMN DOB Date;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1246" height="298" alt="image" src="https://github.com/user-attachments/assets/8ae6df38-d093-4754-8462-2a78aae9f12d" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Create a table named Products with the following constraints: ProductID as INTEGER should be the primary key. ProductName as TEXT should be unique and not NULL. Price as REAL should be greater than 0. StockQuantity as INTEGER should be non-negative.
 
 ```sql
--- Paste your SQL code below for Question 2
+ CREATE TABLE Products
+(
+ProductID INTEGER primary key,
+ProductName TEXT UNIQUE NOT NULL,
+Price REAL CHECK(Price>0),
+StockQuantity INTEGER CHECK(StockQuantity>0)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="842" height="156" alt="image" src="https://github.com/user-attachments/assets/e079d7e6-1eed-4a78-a96e-0a1920f74544" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Create a table named Products with the following columns:
+ProductID as INTEGER ProductName as TEXT Price as REAL Stock as INTEGER
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Products
+(
+ProductID INTEGER,
+ProductName TEXT,
+Price REAL,
+Stock INTEGER
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1267" height="236" alt="image" src="https://github.com/user-attachments/assets/524fe19d-1d39-4d9f-a335-babaff9cf7bd" />
+
 
 **Question 4**
----
--- Paste Question 4 here
+--  Insert the following employees into the Employee table:
+
+EmployeeID Name Position Department Salary
+
+
 
 ```sql
--- Paste your SQL code below for Question 4
+
+INSERT INTO Employee(EmployeeID,Name,Position,Department ,Salary)
+values(2,           'John Smith'  ,'Developer'  , 'IT'  ,        75000);
+INSERT INTO Employee(EmployeeID,Name,Position,Department ,Salary)
+values(3,           'Anna Bell'  ,'Designer'  , 'Marketing'  ,        68000);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1242" height="277" alt="image" src="https://github.com/user-attachments/assets/7541c60d-0f9e-4bd0-9411-36586e498844" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+--Create a table named Departments with the following columns:
+
+DepartmentID as INTEGER DepartmentName as TEXT
+
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE Departments
+(
+DepartmentID INTEGER,
+DepartmentName TEXT
+
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1237" height="275" alt="image" src="https://github.com/user-attachments/assets/02c8981e-af9c-4a20-98d0-f763035e988a" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+--  Insert the below data into the Employee table, allowing the Department and Salary columns to take their default values.
+
+EmployeeID Name Position
 
 ```sql
--- Paste your SQL code below for Question 6
+INSERT INTO Employee(EmployeeID,Name,Position)
+values(4           ,'Emily White','Analyst');
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="828" height="236" alt="image" src="https://github.com/user-attachments/assets/8557820b-8e93-4569-98e3-d4dea12150c7" />
+
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Create a table named Orders with the following constraints: OrderID as INTEGER should be the primary key. OrderDate as DATE should be not NULL. CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Orders
+(
+OrderID INTEGER primary key,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER,
+FOREIGN KEY(CustomerID) REFERENCES Customers(CustomerID)
+);
+
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="621" height="166" alt="image" src="https://github.com/user-attachments/assets/52c02ea1-e5d0-4158-9f28-992b3fa4be53" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
-
+-- Insert the following students into the Student_details table: RollNo Name Gender Subject MARKS
 ```sql
--- Paste your SQL code below for Question 8
+INSERT INTO Student_details(RollNo ,Name    ,    Gender  ,    Subject ,    MARKS)
+values(202       ,  'Ella King'  ,'F','Chemistry' ,  87);
+INSERT INTO Student_details(RollNo ,Name    ,    Gender  ,    Subject ,    MARKS)
+values(203       ,  'James Bond'  ,'M','Literature' ,  78);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1239" height="195" alt="image" src="https://github.com/user-attachments/assets/5dbacd8f-e6e5-40ce-a7a9-ecdd9a62c382" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Create a new table named item with the following specifications and constraints: item_id as TEXT and as primary key. item_desc as TEXT. rate as INTEGER. icom_id as TEXT with a length of 4. icom_id is a foreign key referencing com_id in the company table. The foreign key should cascade updates and deletes. item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE item
+(
+item_id TEXT primary key,
+item_desc TEXT not null,
+rate INTEGER not null,
+icom_id TEXT(4),
+FOREIGN KEY(icom_id) REFERENCES company(com_id)
+on update cascade
+on delete cascade
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1211" height="262" alt="image" src="https://github.com/user-attachments/assets/66e65426-ce0c-4d6d-9b46-f8ea0c549781" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Write an SQL query to add two new columns, designation and net_salary, to the table Companies. The designation column should have a data type of varchar(50), and the net_salary column should have a data type of number.
 
 ```sql
--- Paste your SQL code below for Question 10
+ALTER TABLE Companies
+ADD COLUMN designation varchar(50);
+ALTER TABLE Companies
+ADD COLUMN net_salary number;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1233" height="311" alt="image" src="https://github.com/user-attachments/assets/eb41bb91-3627-4f29-b043-4ca83a803111" />
 
 
 ## RESULT
